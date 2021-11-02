@@ -1,4 +1,4 @@
-package yh.advanced.app;
+package yh.advanced.app.V0;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
