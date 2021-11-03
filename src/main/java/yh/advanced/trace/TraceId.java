@@ -17,7 +17,6 @@ public class TraceId {
 
     }
 
-
     private String createId() {
         return UUID.randomUUID().toString().substring(0, 8);
     }
@@ -26,7 +25,7 @@ public class TraceId {
         return new TraceId(this.id, this.level+1);
     }
 
-    public TraceId previousNextId(){
+    public TraceId createPreviousId(){
         return new TraceId(this.id, this.level-1);
     }
 
