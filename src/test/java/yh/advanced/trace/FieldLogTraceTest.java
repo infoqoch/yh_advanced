@@ -1,6 +1,8 @@
 package yh.advanced.trace;
 
 import org.junit.jupiter.api.Test;
+import yh.advanced.trace.FieldLogTrace;
+import yh.advanced.trace.TraceStatus;
 
 import static org.junit.jupiter.api.Assertions.*;
 
