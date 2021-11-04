@@ -4,13 +4,14 @@ package yh.advanced.app.V3;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import yh.advanced.trace.FieldLogTrace;
+import yh.advanced.trace.LogTrace;
 import yh.advanced.trace.TraceStatus;
 import yh.advanced.trace.hellotrace.HelloTraceV2;
 
 @Repository
 @RequiredArgsConstructor
 public class OrderRepositoryV3 {
-    private final FieldLogTrace trace;
+    private final LogTrace trace;
 
     public void save(String itemId){
         TraceStatus status = null;

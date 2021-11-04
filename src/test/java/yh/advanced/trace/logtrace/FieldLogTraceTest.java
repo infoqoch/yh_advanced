@@ -1,4 +1,4 @@
-package yh.advanced.trace;
+package yh.advanced.trace.logtrace;
 
 import org.junit.jupiter.api.Test;
 import yh.advanced.trace.FieldLogTrace;

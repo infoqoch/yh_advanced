@@ -1,7 +1,7 @@
-package yh.advanced.trace.threadloca;
+package yh.advanced.trace.threadlocal;
 
 import org.junit.jupiter.api.Test;
-import yh.advanced.trace.threadloca.code.FieldService;
+import yh.advanced.trace.threadlocal.code.FieldService;
 
 public class FieldServiceTest {
 

@@ -3,19 +3,19 @@ package yh.advanced.trace;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class FieldLogTrace implements LogTrace{
+public class ThreadLocalLogTrace implements LogTrace{
     private static final String START_PREFIX = "-->";
     private static final String COMPLETE_PREFIX = "<--";
     private static final String EX_PREFIX = "<X-";
 
-    private TraceId traceId;
+    private ThreadLocal<TraceId> traceId = new ThreadLocal<>();
 
     @Override
     public TraceStatus begin(String message) {
         syncTraceId();
         long startTimeMs = System.currentTimeMillis();
-        log.info("[{}] {}{}", traceId.getId(), addSpace(START_PREFIX, traceId.getLevel()), message);
-        return new TraceStatus(traceId, startTimeMs, message);
+        log.info("[{}] {}{}", traceId.get().getId(), addSpace(START_PREFIX, traceId.get().getLevel()), message);
+        return new TraceStatus(traceId.get(), startTimeMs, message);
     }
 
     private String addSpace(String prefix, int level) {
@@ -28,10 +28,10 @@ public class FieldLogTrace implements LogTrace{
     }
 
     private void syncTraceId() {
-        if(traceId==null){
-            traceId = new TraceId();
+        if(traceId.get()==null){
+            traceId.set(new TraceId());
         }else{
-            traceId = traceId.createNextId();
+            traceId.set(traceId.get().createNextId());
         }
     }
 
@@ -64,10 +64,10 @@ public class FieldLogTrace implements LogTrace{
     }
 
     private void releaseTraceId() {
-        if(traceId.isFirstLevel()){
-            traceId = null;
+        if(traceId.get().isFirstLevel()){
+            traceId.remove();
         }else{
-            traceId = traceId.createPreviousId();
+            traceId.set(traceId.get().createPreviousId());
         }
     }
 }

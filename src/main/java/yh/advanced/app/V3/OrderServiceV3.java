@@ -3,6 +3,7 @@ package yh.advanced.app.V3;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import yh.advanced.trace.FieldLogTrace;
+import yh.advanced.trace.LogTrace;
 import yh.advanced.trace.TraceStatus;
 import yh.advanced.trace.hellotrace.HelloTraceV2;
 
@@ -10,7 +11,7 @@ import yh.advanced.trace.hellotrace.HelloTraceV2;
 @RequiredArgsConstructor
 public class OrderServiceV3 {
     private final OrderRepositoryV3 orderRepository;
-    private final FieldLogTrace trace;
+    private final LogTrace trace;
 
     public void orderItem(String itemId){
         TraceStatus status = null;
