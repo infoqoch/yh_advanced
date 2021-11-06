@@ -14,7 +14,7 @@ public abstract class AbstractTemplate<T> {
         this.logTrace = logTrace;
     }
 
-    public T excute(String message){
+    public T execute(String message){
         TraceStatus status = null;
         try{
             status = logTrace.begin(message);
